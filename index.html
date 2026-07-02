@@ -840,6 +840,13 @@ decoding="async"
           >
             <img src="images/Youtube.png" alt="Youtube" />
           </a>
+          <a
+            href="https://www.tiktok.com/@innoventserviciosti"
+            target="_blank"
+            aria-label="Tiktok"
+          >
+            <img src="images/tiktok.jfif" alt="Youtube" />
+          </a>
         </div>
       </div>
     </div>
@@ -850,22 +857,51 @@ decoding="async"
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const planButtons = document.querySelectorAll(".btn-plan");
-  const chat = document.getElementById("taboti-chat");
+  const chat = document.getElementById("chatbox");
   const chatBody = document.getElementById("chat-body");
   const typing = document.getElementById("typing");
-  const icon = document.getElementById("taboti-icon");
-  const closeChat = document.getElementById("closeChat");
+  const icon = document.getElementById("chat-toggle");
+  const closeChat = document.getElementById("chat-close");
 
   const whatsappURL = "https://wa.me/573012041255?text=Hola%20Taboti,%20quiero%20más%20información%20sobre%20sus%20servicios.";
 
-  /* 🔹 ABRIR / CERRAR CHAT CON ANIMACIÓN */
-  icon.addEventListener("click", () => {
-    chat.classList.toggle("active");   // ✅ Cambia el estado del chat
-  });
+  /*==========================
+    ABRIR Y CERRAR
+==========================*/
 
-  closeChat.addEventListener("click", () => {
-    chat.classList.remove("active");   // ✅ Lo cierra sin conflicto
-  });
+icon.addEventListener("click",()=>{
+
+    chat.classList.toggle("active");
+
+    icon.classList.toggle("active");
+
+});
+
+/*==========================
+    BOTON CERRAR
+==========================*/
+
+closeChat.addEventListener("click",()=>{
+
+    chat.classList.remove("active");
+
+});
+
+document.addEventListener("click",(e)=>{
+
+    if(
+
+        !chat.contains(e.target) &&
+
+        !icon.contains(e.target)
+
+    ){
+
+        chat.classList.remove("active");
+
+    }
+
+});
 
   /* --- RESTO DE TU CÓDIGO --- */
 
