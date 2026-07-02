@@ -1,18 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INNOVENT SERVICIOS TI</title>
+  <head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Innovent Servicios TI | Diseño Web + Soporte Técnico + Estrategia Digital</title>
+  <meta name="description" content="Creamos sitios web profesionales, brindamos soporte técnico, mantenimiento y seguridad informática. Innovent Software es tu aliado digital en Cartagena, Colombia.">
+  <meta name="keywords" content="Innovent Software, diseño web Cartagena, soporte técnico PC, mantenimiento, desarrollo web, seguridad informática, estrategia digital">
+  <meta name="author" content="Innovent Software">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://innoventserviciosti.netlify.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Innovent Software | Diseño Web y Soporte Técnico">
+  <meta property="og:description" content="Soluciones digitales que impulsan tu presencia online. Diseño, desarrollo y soporte desde Cartagena para el mundo.">
+  <meta property="og:image" content="https://innoventserviciosti.netlify.app//images/logo.jpg">
+  <meta property="og:url" content="https://innoventserviciosti.netlify.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Innovent Software | Diseño Web y Soporte Técnico">
+  <meta name="twitter:description" content="Impulsamos tu negocio con tecnología y estrategia digital. Atención personalizada y resultados reales.">
+  <meta name="twitter:image" content="https://innoventserviciosti.netlify.app/images/logo.png">
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="TU_CODIGO_VERIFICACION_GOOGLE">
+
+  <!-- Boxicons CDN -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/logo.jpg" type="image/png">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+  
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Certificado SSL - Indicación visual -->
+  <link rel="icon" href="images/logo.jpg" type="image/png" title="Sitio seguro SSL"/>
+
+  <!-- Google Analytics Básico (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX'); // Reemplaza con tu ID de GA4
+  </script>
 </head>
 
 <body>
@@ -50,7 +95,7 @@ aria-controls="nav"
   id="nav"
   aria-label="Menú principal"
 >
-    <a href="#inicio">Inicio</a> <!--<a href="#servicios">Servicios</a>--> <a href="#beneficios">Beneficios</a> <a href="#contacto">Contacto</a> <a href="soporte/admin_login.html" class="btn-admin"> Admin </a> <a href="soporte/usuario_login.html" class="btn-user"> Usuario </a>
+    <a href="#inicio">Inicio</a> <!--<a href="#servicios">Servicios</a>--> <a href="#beneficios">Beneficios</a> <a href="#contacto">Contacto</a> <!--<a href="soporte/admin_login.html" class="btn-admin"> Admin </a> <a href="soporte/usuario_login.html" class="btn-user"> Usuario </a>-->
   </nav>
 
 </header>
@@ -734,116 +779,185 @@ decoding="async"
 
 </footer>
 
-<!-- ASESOR VIRTUAL -
+    <!-- ================================
+ ASESOR VIRTUAL
+================================ -->
+    <div class="asesor-container">
+      <!-- Botón del asesor virtual -->
+      <button id="chat-toggle">
+        <img
+          src="images/ASESOR VIRTUAL.webp"
+          alt="Asesor Virtual Taboplus"
+        />
+      </button>
 
-<div class="taboti-container">
+      <!-- Ventana de chat -->
+      <div id="chatbox">
+        <div id="chat-header">
+          🤖 Asesor Virtual
+          <span
+            id="chat-close"
+            style="cursor: pointer; float: right; font-weight: bold"
+          >
+            X
+          </span>
+        </div>
 
-  <!-- BOTÓN -
-  <button class="taboti-btn" onclick="toggleTaboti()">
-    💬
-  </button>
+        <div id="chat-messages"></div>
 
-  <!-- CHAT -
-  <div class="taboti-chat" id="tabotiChat">
+        <div id="chat-input">
+          <input id="input" type="text" placeholder="Escribe aquí..." />
+          <button onclick="enviar()">➤</button>
+        </div>
 
-    <!-- HEADER -
-    <div class="taboti-header">
-      <div class="taboti-title">
-        <strong>TABOTI</strong>
-        <span>Asistente virtual</span>
+        <!-- Redes sociales -->
+        <div id="chat-social">
+          <a
+            href="https://wa.me/573012041255?text=Hola%2C%20quisiera%20más%20información"
+            target="_blank"
+            aria-label="WhatsApp"
+          >
+            <img src="images/Whatsapp.png" alt="WhatsApp" />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61588246957487&ref=PROFILE_EDIT_xav_ig_profile_page_web#"
+            target="_blank"
+            aria-label="Facebook"
+          >
+            <img src="images/Facebook.png" alt="Facebook" />
+          </a>
+          <a
+            href="https://www.instagram.com/innovent_servicios_ti/"
+            target="_blank"
+            aria-label="Instagram"
+          >
+            <img src="images/Instagram.png" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.youtube.com/@innovent_soporte_ti"
+            target="_blank"
+            aria-label="Youtube"
+          >
+            <img src="images/Youtube.png" alt="Youtube" />
+          </a>
+        </div>
       </div>
-      <button class="close-btn" onclick="toggleTaboti()">✖</button>
     </div>
 
-    <!-- MENSAJES -
-    <div class="taboti-messages" id="tabotiMessages">
-      <div class="bot">
-        Hola 👋 soy <strong>TABOTI</strong><br>
-        Puedo ayudarte con:
-        <ul>
-          <li>Servicios</li>
-          <li>Precios</li>
-          <li>Soporte</li>
-        </ul>
-      </div>
-    </div>
+<!-- Fin asesor virtual Taboti -->
 
-    <!-- INPUT (NUEVO) -
-    <div class="taboti-input">
-      <input type="text" id="userInput" placeholder="Escribe tu mensaje...">
-      <button onclick="sendMessage()">➤</button>
-    </div>
-
-    <!-- OPCIONES -
-    <div class="taboti-options">
-      <button onclick="sendOption('servicios')">Servicios</button>
-      <button onclick="sendOption('precios')">Precios</button>
-      <button onclick="sendOption('soporte')">Soporte</button>
-      <button onclick="sendOption('contacto')">Contacto</button>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ASESOR VIRTUAL-->
+<!-- SCRIPT ANIMACION DE ASESOR VIRTUAL + 🧩 LÓGICA DEL CHAT -->
 <script>
-function toggleTaboti() {
-  const chat = document.getElementById("tabotiChat");
-  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const planButtons = document.querySelectorAll(".btn-plan");
+  const chat = document.getElementById("taboti-chat");
+  const chatBody = document.getElementById("chat-body");
+  const typing = document.getElementById("typing");
+  const icon = document.getElementById("taboti-icon");
+  const closeChat = document.getElementById("closeChat");
 
-function addMessage(text, type="bot") {
-  const messages = document.getElementById("tabotiMessages");
-  const msg = document.createElement("div");
-  msg.className = type;
-  msg.innerHTML = text;
-  messages.appendChild(msg);
-  messages.scrollTop = messages.scrollHeight;
-}
+  const whatsappURL = "https://wa.me/573012041255?text=Hola%20Taboti,%20quiero%20más%20información%20sobre%20sus%20servicios.";
 
-function sendOption(option) {
-  let response = "";
+  /* 🔹 ABRIR / CERRAR CHAT CON ANIMACIÓN */
+  icon.addEventListener("click", () => {
+    chat.classList.toggle("active");   // ✅ Cambia el estado del chat
+  });
 
-  switch(option) {
-    case "servicios":
-      response = "Ofrecemos soporte técnico, redes, seguridad y desarrollo de software.";
-      break;
-    case "precios":
-      response = "Nuestros planes van desde $400.000 COP. ¿Quieres recomendación?";
-      break;
-    case "soporte":
-      response = "Nuestro soporte es rápido y continuo. Estamos listos para ayudarte.";
-      break;
-    case "contacto":
-      response = "Te redirijo a WhatsApp 👇";
-      setTimeout(() => {
-        window.open("https://wa.me/573012041255", "_blank");
-      }, 1000);
-      break;
+  closeChat.addEventListener("click", () => {
+    chat.classList.remove("active");   // ✅ Lo cierra sin conflicto
+  });
+
+  /* --- RESTO DE TU CÓDIGO --- */
+
+  function initChat() {
+    chatBody.innerHTML = `
+      <div class="taboti-msg">👋 ¡Hola! Soy <b>Taboti</b>, tu asesor virtual tecnológico.<br>
+      ¿En qué puedo ayudarte hoy?</div>
+      <ul class="options">
+        <li onclick="selectOption(1)">💻 Desarrollo web</li>
+        <li onclick="selectOption(2)">⚙️ Soporte técnico</li>
+        <li onclick="selectOption(3)">🔐 Ciberseguridad</li>
+        <li onclick="selectOption(4)">🤝 Consultoría TI</li>
+      </ul>`;
   }
 
-  addMessage(response);
-}
+  initChat();
 
-function sendMessage() {
-  const input = document.getElementById("userInput");
-  const text = input.value.toLowerCase();
+  /* 💬 Lógica de interacción */
+  planButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const planName = button.dataset.plan;
+      chat.classList.add("active"); // ✅ Muestra el chat al seleccionar un plan
 
-  if (!text) return;
+      appendMessage("user", `👤 Me interesa el plan *${planName}*`);
+      typing.classList.remove("hidden");
 
-  addMessage(text, "user");
+      setTimeout(() => {
+        typing.classList.add("hidden");
+        appendMessage("bot", `🚀 ¡Excelente elección! Nuestro plan *${planName}* está diseñado para impulsar tu negocio digital. ¿Quieres que te envíe más información o una cotización por WhatsApp?`);
 
-  let response = "No entendí eso, pero puedo ayudarte con servicios, precios o soporte.";
+        const btn = document.createElement("button");
+        btn.textContent = "Contactar por WhatsApp 💬";
+        btn.className = "whatsapp-btn";
+        btn.onclick = () => {
+          window.open(whatsappURL, "_blank");
+          resetChat();
+        };
+        chatBody.appendChild(btn);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 1000);
+    });
+  });
 
-  if (text.includes("precio")) response = "Nuestros planes empiezan en $400.000 COP.";
-  if (text.includes("servicio")) response = "Ofrecemos soporte, redes, seguridad y desarrollo.";
-  if (text.includes("soporte")) response = "Soporte rápido y continuo para tu empresa.";
+  function appendMessage(sender, text) {
+    const msg = document.createElement("div");
+    msg.className = sender === "bot" ? "taboti-msg" : "user-msg";
+    msg.innerHTML = text;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
 
-  setTimeout(() => addMessage(response), 500);
+  function resetChat() {
+    setTimeout(() => initChat(), 2500);
+  }
 
-  input.value = "";
-}
+  window.selectOption = function(option) {
+    const responses = {
+      1: "🚀 En *Desarrollo Web* creamos páginas modernas y optimizadas. ¿Quieres ver ejemplos o cotización?",
+      2: "⚙️ En *Soporte Técnico* ofrecemos mantenimiento, diagnóstico y asistencia remota o presencial. ¿Prefieres soporte inmediato o agendar una revisión?",
+      3: "🔐 En *Ciberseguridad* protegemos tus sistemas y datos. ¿Deseas una auditoría o asesoría gratuita?",
+      4: "🤝 En *Consultoría TI* analizamos tus procesos para implementar soluciones inteligentes. ¿Quieres que preparemos una propuesta sin costo?"
+    };
+
+    const objeciones = [
+      "Entiendo que estés evaluando opciones, nuestra primera asesoría es gratuita 😉.",
+      "Si quieres, podemos enviarte la info por WhatsApp y resolver todas tus dudas sin compromiso.",
+      "Nuestro equipo está listo para mejorar tu presencia digital y seguridad tecnológica 💪."
+    ];
+
+    const userText = document.querySelectorAll(".options li")[option - 1].textContent;
+    appendMessage("user", userText);
+
+    typing.classList.remove("hidden");
+    setTimeout(() => {
+      typing.classList.add("hidden");
+      appendMessage("bot", responses[option]);
+
+      setTimeout(() => {
+        appendMessage("bot", objeciones[Math.floor(Math.random() * objeciones.length)]);
+        const btn = document.createElement("button");
+        btn.textContent = "Contactar por WhatsApp 💬";
+        btn.className = "whatsapp-btn";
+        btn.onclick = () => {
+          window.open(whatsappURL, "_blank");
+          resetChat();
+        };
+        chatBody.appendChild(btn);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 1200);
+    }, 1000);
+  }
+});
 </script>
 
 <!-- FORMULARIO CONTACTO -->
