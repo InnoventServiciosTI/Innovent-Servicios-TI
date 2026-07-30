@@ -654,10 +654,150 @@ bottom:15px;
 
 }
 
+}
+
+/* ==============================
+   TITULO DISPONIBLES
+   ENTREGA INMEDIATA
+============================== */
+
+
+.titulo-productos{
+
+    text-align:center;
+    margin:40px auto 25px;
+    padding:0 20px;
+
+}
+
+
+
+.titulo-productos h1{
+
+    font-size:38px;
+    font-weight:800;
+    color:#111827;
+    letter-spacing:-1px;
+    position:relative;
+    display:inline-block;
+    text-transform:uppercase;
+
+}
+
+
+/* Línea decorativa */
+
+.titulo-productos h1::after{
+
+    content:"";
+
+    display:block;
+
+    width:90px;
+
+    height:5px;
+
+    background:#0a7cff;
+
+    border-radius:10px;
+
+    margin:15px auto 0;
+
+}
+
+
+
+/* Texto secundario opcional */
+
+.titulo-productos p{
+
+    margin-top:15px;
+
+    font-size:18px;
+
+    color:#6b7280;
+
+}
+
+
+
+/* ==============================
+   RESPONSIVE TABLET
+============================== */
+
+
+@media(max-width:768px){
+
+
+.titulo-productos{
+
+    margin:30px auto 20px;
+
+}
+
+
+.titulo-productos h1{
+
+
+    font-size:30px;
+
+}
+
+
+.titulo-productos p{
+
+    font-size:16px;
+
+}
 
 
 }
 
+
+
+/* ==============================
+   RESPONSIVE MOVIL
+============================== */
+
+
+@media(max-width:480px){
+
+
+.titulo-productos{
+
+    padding:0 15px;
+
+}
+
+
+.titulo-productos h1{
+
+
+    font-size:22px;
+
+    line-height:1.3;
+
+}
+
+
+.titulo-productos h1::after{
+
+
+    width:60px;
+
+    height:4px;
+
+
+}
+
+
+.titulo-productos p{
+
+    font-size:14px;
+
+}
+
+}
 
 
 </style>
@@ -674,8 +814,19 @@ bottom:15px;
 
 <section class="producto-container">
 
-
 <div class="producto">
+
+  <section class="titulo-productos">
+
+    <h1>
+        Disponibles entrega inmediata
+    </h1>
+
+    <p>
+        Productos tecnológicos listos para entrega en Cartagena
+    </p>
+
+</section>
 
 
 <img src="images/Accesorios pc/producto fisico.jpg" 
