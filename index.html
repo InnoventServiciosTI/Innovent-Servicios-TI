@@ -1,1185 +1,1535 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description"
-        content="Innovent Servicios TI - Soluciones tecnológicas para emprendedores y empresas.">
+    <meta
+      name="description"
+      content="Innovent Servicios TI - Soluciones tecnológicas para emprendedores y empresas."
+    />
 
-    <meta name="keywords"
-        content="Innovent, servicios TI, soporte técnico, desarrollo web, inteligencia artificial, Cartagena">
+    <meta
+      name="keywords"
+      content="Innovent, servicios TI, soporte técnico, desarrollo web, inteligencia artificial, Cartagena"
+    />
 
-    <meta name="author" content="Innovent Servicios TI">
+    <meta name="author" content="Innovent Servicios TI" />
 
     <title>Innovent Servicios TI | Tecnología que impulsa</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/logo.png">
+    <link rel="icon" href="assets/logo.png" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Font Awesome -->
     <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* =====================================================
+   INNOVENT - GENERADOR IA + PLANES
+===================================================== */
+      .btn-ai {
+        border: 1px solid rgba(199, 125, 255, 0.65);
+        background: rgba(199, 125, 255, 0.12);
+        color: #fff;
+      }
+      .btn-ai:hover {
+        background: rgba(199, 125, 255, 0.22);
+      }
+      .ai-service-card {
+        position: relative;
+        overflow: hidden;
+      }
+      .ai-service-card:before {
+        content: "IA";
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        font-weight: 800;
+        font-size: 42px;
+        opacity: 0.07;
+      }
+      .service-link {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 14px;
+        color: #c77dff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .ai-generator-section {
+        background: linear-gradient(
+          180deg,
+          rgba(199, 125, 255, 0.035),
+          transparent
+        );
+      }
+      .ai-generator-grid {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.85fr) minmax(320px, 1.15fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+      .ai-generator-panel,
+      .ai-preview-panel {
+        background: rgba(15, 15, 22, 0.72);
+        border: 1px solid rgba(199, 125, 255, 0.16);
+        border-radius: 22px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+      }
+      .ai-generator-panel {
+        padding: 26px;
+      }
+      .ai-step {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 22px;
+      }
+      .ai-step > span {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #c77dff;
+        color: #111;
+        font-weight: 800;
+      }
+      .ai-step div {
+        display: grid;
+        gap: 3px;
+      }
+      .ai-step small {
+        opacity: 0.65;
+      }
+      .ai-generator-panel label {
+        display: block;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin: 15px 0 7px;
+      }
+      .ai-generator-panel input,
+      .ai-generator-panel select,
+      .ai-generator-panel textarea {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: #0b0b10;
+        color: inherit;
+        border-radius: 12px;
+        padding: 13px 14px;
+        outline: none;
+        transition: 0.2s;
+      }
+      .ai-generator-panel input:focus,
+      .ai-generator-panel select:focus,
+      .ai-generator-panel textarea:focus {
+        border-color: #c77dff;
+        box-shadow: 0 0 0 3px rgba(199, 125, 255, 0.1);
+      }
+      .ai-generator-panel textarea {
+        resize: vertical;
+      }
+      .ai-generate-btn {
+        width: 100%;
+        margin-top: 18px;
+      }
+      .ai-note {
+        display: block;
+        margin-top: 12px;
+        line-height: 1.5;
+        opacity: 0.6;
+      }
+      .ai-note code {
+        color: #c77dff;
+      }
+      .ai-preview-panel {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .ai-preview-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.9rem;
+      }
+      .status-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #53e08b;
+        margin-right: 7px;
+      }
+      .preview-actions {
+        display: flex;
+        gap: 6px;
+      }
+      .preview-actions button {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        opacity: 0.55;
+        width: 36px;
+        height: 32px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .preview-actions button.active,
+      .preview-actions button:hover {
+        background: rgba(199, 125, 255, 0.14);
+        opacity: 1;
+        color: #c77dff;
+      }
+      .ai-preview-frame {
+        min-height: 500px;
+        padding: 18px;
+        display: grid;
+        place-items: center;
+        transition: 0.25s;
+      }
+      .ai-preview-frame.mobile-preview {
+        max-width: 390px;
+        width: 100%;
+        margin: 18px auto;
+        min-height: 620px;
+        border: 8px solid #17171f;
+        border-radius: 28px;
+        padding: 10px;
+      }
+      .preview-empty {
+        text-align: center;
+        opacity: 0.55;
+        padding: 40px;
+      }
+      .preview-empty i {
+        font-size: 44px;
+        color: #c77dff;
+      }
+      .generated-site {
+        width: 100%;
+        min-height: 460px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #0d0d12;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .generated-hero {
+        padding: 54px 28px;
+        background: linear-gradient(135deg, #17121f, #29163d);
+        text-align: center;
+      }
+      .generated-hero h2 {
+        margin: 8px 0;
+        font-size: clamp(1.7rem, 4vw, 2.6rem);
+      }
+      .generated-hero p {
+        opacity: 0.8;
+        max-width: 650px;
+        margin: 0 auto;
+      }
+      .generated-content {
+        padding: 26px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .generated-card {
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+      .generated-cta {
+        text-align: center;
+        padding: 0 24px 28px;
+      }
+      .generated-cta a {
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 10px;
+        background: #c77dff;
+        color: #111;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      .pricing-wrapper {
+        margin-top: 72px;
+      }
+      .pricing-title {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 34px;
+      }
+      .pricing-title > span {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        color: #c77dff;
+        font-weight: 800;
+      }
+      .pricing-title h3 {
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        margin: 8px 0;
+      }
+      .pricing-title p {
+        opacity: 0.7;
+      }
+      .pricing-category {
+        margin-top: 34px;
+      }
+      .pricing-category-heading {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+      .pricing-category-heading > i {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: rgba(199, 125, 255, 0.1);
+        color: #c77dff;
+        font-size: 20px;
+      }
+      .pricing-category-heading h4 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+      .pricing-category-heading p {
+        margin: 4px 0 0;
+        opacity: 0.65;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .price-card {
+        position: relative;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        background: rgba(12, 12, 17, 0.72);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      }
+      .price-card.featured {
+        border-color: rgba(199, 125, 255, 0.55);
+        box-shadow:
+          0 0 0 1px rgba(199, 125, 255, 0.1),
+          0 18px 45px rgba(199, 125, 255, 0.08);
+      }
+      .price-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        color: #c77dff;
+        font-weight: 800;
+      }
+      .price-card h4 {
+        font-size: 1.3rem;
+        margin: 8px 0;
+      }
+      .price {
+        font-size: 1.7rem;
+        font-weight: 850;
+        margin-bottom: 15px;
+      }
+      .price small {
+        font-size: 0.72rem;
+        opacity: 0.6;
+        font-weight: 600;
+      }
+      .price-card ul {
+        padding-left: 18px;
+        display: grid;
+        gap: 9px;
+        opacity: 0.78;
+        line-height: 1.4;
+        flex: 1;
+      }
+      .price-card .btn {
+        margin-top: 16px;
+        text-align: center;
+      }
+      .price-badge {
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        font-size: 0.64rem;
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: #c77dff;
+        color: #111;
+        font-weight: 900;
+      }
+      .support-pricing {
+        margin-top: 48px;
+      }
+      .support-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: 1000px) {
+        .pricing-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .support-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 850px) {
+        .ai-generator-grid {
+          grid-template-columns: 1fr;
+        }
+        .ai-preview-frame {
+          min-height: 420px;
+        }
+        .generated-content {
+          grid-template-columns: 1fr 1fr;
+        }
+        .header-social {
+          display: none;
+        }
+      }
+      @media (max-width: 620px) {
+        .pricing-grid,
+        .support-grid {
+          grid-template-columns: 1fr;
+        }
+        .ai-generator-panel {
+          padding: 20px;
+        }
+        .pricing-wrapper {
+          margin-top: 48px;
+        }
+        .generated-content {
+          grid-template-columns: 1fr;
+        }
+        .ai-preview-frame.mobile-preview {
+          max-width: 340px;
+        }
+        .hero-buttons {
+          flex-wrap: wrap;
+        }
+        .hero-buttons .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ai-preview-frame,
+        .ai-generator-panel input,
+        .ai-generator-panel select,
+        .ai-generator-panel textarea {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
 
-<body>
-
-<!-- =====================================================
+  <body>
+    <!-- =====================================================
      HEADER
 ===================================================== -->
 
-<header class="header" id="header">
-
-    <div class="container navbar">
-
+    <header class="header" id="header">
+      <div class="container navbar">
         <a href="#inicio" class="brand">
+          <img src="assets/logo.png" alt="Innovent Servicios TI" />
 
-            <img
-                src="assets/logo.png"
-                alt="Innovent Servicios TI">
-
-            <div class="brand-text">
-                <strong>INNOVENT</strong>
-                <span>SERVICIOS TI</span>
-            </div>
-
+          <div class="brand-text">
+            <strong>INNOVENT</strong>
+            <span>SERVICIOS TI</span>
+          </div>
         </a>
 
-
         <nav class="nav-menu" id="navMenu">
+          <a href="#inicio" class="active"> Inicio </a>
 
-            <a href="#inicio" class="active">
-                Inicio
-            </a>
+          <a href="#servicios"> Servicios </a>
 
-            <a href="#servicios">
-                Servicios
-            </a>
+          <a href="#generador-ia"> Generador IA </a>
 
-            <a href="#nosotros">
-                Nosotros
-            </a>
+          <a href="#nosotros"> Nosotros </a>
 
-            <a href="#testimonios">
-                Testimonios
-            </a>
+          <a href="#testimonios"> Testimonios </a>
 
-            <a href="#contacto">
-                Contacto
-            </a>
-
+          <a href="#contacto"> Contacto </a>
         </nav>
-
 
         <!-- Redes del header -->
 
         <div class="header-social">
+          <a
+            href="https://www.facebook.com/profile.php?id=61593718547031"
+            target="_blank"
+            aria-label="Facebook"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
 
-            <a
-                href="https://www.facebook.com/profile.php?id=61593718547031"
-                target="_blank"
-                aria-label="Facebook">
+          <a
+            href="https://www.tiktok.com/@innoventserviciosti"
+            target="_blank"
+            aria-label="TikTok"
+          >
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
 
-                <i class="fa-brands fa-facebook-f"></i>
+          <a
+            href="https://www.instagram.com/INNOVENT_SERVICIOS_TI/"
+            target="_blank"
+            aria-label="Instagram"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
 
-            </a>
+          <a
+            href="https://www.threads.com/@innovent_servicios_ti"
+            target="_blank"
+            aria-label="Threads"
+          >
+            <i class="fa-brands fa-threads"></i>
+          </a>
 
-            <a
-                href="https://www.tiktok.com/@innoventserviciosti"
-                target="_blank"
-                aria-label="TikTok">
+          <a
+            href="https://www.youtube.com/@Innovent_soporte_ti"
+            target="_blank"
+            aria-label="YouTube"
+          >
+            <i class="fa-brands fa-youtube"></i>
+          </a>
 
-                <i class="fa-brands fa-tiktok"></i>
-
-            </a>
-
-            <a
-                href="https://www.instagram.com/INNOVENT_SERVICIOS_TI/"
-                target="_blank"
-                aria-label="Instagram">
-
-                <i class="fa-brands fa-instagram"></i>
-
-            </a>
-
-            <a
-                href="https://www.threads.com/@innovent_servicios_ti"
-                target="_blank"
-                aria-label="Threads">
-
-                <i class="fa-brands fa-threads"></i>
-
-            </a>
-
-            <a
-                href="https://www.youtube.com/@Innovent_soporte_ti"
-                target="_blank"
-                aria-label="YouTube">
-
-                <i class="fa-brands fa-youtube"></i>
-
-            </a>
-
-            <a
-                href="https://github.com/InnoventServiciosTI"
-                target="_blank"
-                aria-label="GitHub">
-
-                <i class="fa-brands fa-github"></i>
-
-            </a>
-
+          <a
+            href="https://github.com/InnoventServiciosTI"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
-
 
         <!-- Botón móvil -->
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Abrir menú">
-
-            <i class="fa-solid fa-bars"></i>
-
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <i class="fa-solid fa-bars"></i>
         </button>
+      </div>
+    </header>
 
-    </div>
-
-</header>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      HERO
 ===================================================== -->
 
-<section class="hero" id="inicio">
+    <section class="hero" id="inicio">
+      <div class="hero-background"></div>
 
-    <div class="hero-background"></div>
-
-    <div class="container hero-grid">
-
+      <div class="container hero-grid">
         <div class="hero-content">
+          <div class="hero-badge">Tecnología • Innovación • Soluciones</div>
 
-            <div class="hero-badge">
-                Tecnología • Innovación • Soluciones
-            </div>
+          <h1>
+            Impulsa tu negocio
+            <span>con tecnología.</span>
+          </h1>
 
+          <p>
+            En Innovent Servicios TI ofrecemos soluciones tecnológicas para
+            emprendedores y empresas que buscan optimizar sus procesos,
+            fortalecer su presencia digital y alcanzar nuevos objetivos.
+          </p>
 
-            <h1>
-                Impulsa tu negocio
-                <span>con tecnología.</span>
-            </h1>
+          <div class="hero-buttons">
+            <a href="#servicios" class="btn btn-primary">
+              Ver servicios
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
+            <a href="#generador-ia" class="btn btn-ai">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              Crear sitio con IA
+            </a>
 
-            <p>
-                En Innovent Servicios TI ofrecemos soluciones tecnológicas
-                para emprendedores y empresas que buscan optimizar sus
-                procesos, fortalecer su presencia digital y alcanzar
-                nuevos objetivos.
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <a href="#servicios" class="btn btn-primary">
-                    Ver servicios
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-                <a href="#contacto" class="btn btn-outline">
-                    Contáctanos
-                </a>
-
-            </div>
-
+            <a href="#contacto" class="btn btn-outline"> Contáctanos </a>
+          </div>
         </div>
-
 
         <div class="hero-visual">
+          <div class="hero-glow"></div>
 
-            <div class="hero-glow"></div>
-
-            <div class="laptop-card">
-
-                <div class="laptop-screen">
-
-                    <img
-                        src="assets/logo.png"
-                        alt="Innovent">
-
-                </div>
-
-                <div class="laptop-base"></div>
-
+          <div class="laptop-card">
+            <div class="laptop-screen">
+              <img src="assets/logo.png" alt="Innovent" />
             </div>
 
+            <div class="laptop-base"></div>
+          </div>
 
-            <div class="hero-message">
+          <div class="hero-message">
+            <span> Más que soporte, </span>
 
-                <span>
-                    Más que soporte,
-                </span>
+            somos tu
 
-                somos tu
-
-                <strong>
-                    aliado tecnológico.
-                </strong>
-
-            </div>
-
+            <strong> aliado tecnológico. </strong>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      SERVICIOS
 ===================================================== -->
 
-<section class="section services" id="servicios">
-
-    <div class="container">
-
+    <section class="section services" id="servicios">
+      <div class="container">
         <div class="section-heading">
+          <span> LO QUE HACEMOS </span>
 
-            <span>
-                LO QUE HACEMOS
-            </span>
+          <h2>Nuestras <strong>soluciones</strong></h2>
 
-            <h2>
-                Nuestras <strong>soluciones</strong>
-            </h2>
-
-            <p>
-                Tecnología pensada para resolver necesidades reales.
-            </p>
-
+          <p>Tecnología pensada para resolver necesidades reales.</p>
         </div>
-
 
         <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-code"></i>
+            </div>
 
+            <h3>Desarrollo Web</h3>
 
-            <article class="service-card">
+            <p>
+              Diseño y desarrollo de sitios web modernos, funcionales y
+              adaptados a diferentes dispositivos.
+            </p>
+          </article>
 
-                <div class="service-icon">
-                    <i class="fa-solid fa-code"></i>
-                </div>
+          <article class="service-card ai-service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
 
-                <h3>
-                    Desarrollo Web
-                </h3>
+            <h3>Generador Web con IA</h3>
 
-                <p>
-                    Diseño y desarrollo de sitios web modernos,
-                    funcionales y adaptados a diferentes dispositivos.
-                </p>
+            <p>
+              Genera una propuesta de sitio web a partir de la información de tu
+              negocio y obtén una vista previa en segundos.
+            </p>
 
-            </article>
+            <a href="#generador-ia" class="service-link"
+              >Crear sitio <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </article>
 
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-gears"></i>
+            </div>
 
-            <article class="service-card">
+            <h3>Soporte TI</h3>
 
-                <div class="service-icon">
-                    <i class="fa-solid fa-gears"></i>
-                </div>
+            <p>
+              Diagnóstico, mantenimiento y solución de problemas tecnológicos
+              para computadores y dispositivos.
+            </p>
+          </article>
 
-                <h3>
-                    Soporte TI
-                </h3>
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-brain"></i>
+            </div>
 
-                <p>
-                    Diagnóstico, mantenimiento y solución de problemas
-                    tecnológicos para computadores y dispositivos.
-                </p>
+            <h3>Soluciones con IA</h3>
 
-            </article>
+            <p>
+              Implementación de herramientas de inteligencia artificial y
+              automatización para diferentes procesos.
+            </p>
+          </article>
 
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
 
-            <article class="service-card">
+            <h3>Seguridad Informática</h3>
 
-                <div class="service-icon">
-                    <i class="fa-solid fa-brain"></i>
-                </div>
+            <p>
+              Recomendaciones y soluciones para proteger información,
+              dispositivos y procesos digitales.
+            </p>
+          </article>
 
-                <h3>
-                    Soluciones con IA
-                </h3>
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
 
-                <p>
-                    Implementación de herramientas de inteligencia
-                    artificial y automatización para diferentes procesos.
-                </p>
+            <h3>Mantenimiento</h3>
 
-            </article>
+            <p>
+              Mantenimiento preventivo y correctivo para mejorar el
+              funcionamiento de tus equipos.
+            </p>
+          </article>
 
+          <article class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
 
-            <article class="service-card">
+            <h3>Consultoría TI</h3>
 
-                <div class="service-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
+            <p>
+              Orientación tecnológica para ayudarte a tomar mejores decisiones
+              para tu negocio.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                <h3>
-                    Seguridad Informática
-                </h3>
-
-                <p>
-                    Recomendaciones y soluciones para proteger
-                    información, dispositivos y procesos digitales.
-                </p>
-
-            </article>
-
-
-            <article class="service-card">
-
-                <div class="service-icon">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                </div>
-
-                <h3>
-                    Mantenimiento
-                </h3>
-
-                <p>
-                    Mantenimiento preventivo y correctivo para mejorar
-                    el funcionamiento de tus equipos.
-                </p>
-
-            </article>
-
-
-            <article class="service-card">
-
-                <div class="service-icon">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-
-                <h3>
-                    Consultoría TI
-                </h3>
-
-                <p>
-                    Orientación tecnológica para ayudarte a tomar
-                    mejores decisiones para tu negocio.
-                </p>
-
-            </article>
-
+    <!-- =====================================================
+     GENERADOR WEB CON IA + PLANES
+===================================================== -->
+    <section class="section ai-generator-section" id="generador-ia">
+      <div class="container">
+        <div class="section-heading">
+          <span>GENERADOR WEB CON IA</span>
+          <h2>
+            Crea una propuesta web para tu negocio <strong>en minutos.</strong>
+          </h2>
+          <p>
+            Describe tu negocio, selecciona el tipo de sitio y genera una vista
+            previa editable.
+          </p>
         </div>
 
-    </div>
+        <div class="ai-generator-grid">
+          <div class="ai-generator-panel">
+            <div class="ai-step">
+              <span>1</span>
+              <div>
+                <strong>Información del negocio</strong
+                ><small>Cuéntanos qué quieres crear.</small>
+              </div>
+            </div>
+            <label for="aiBusiness">Nombre del negocio</label>
+            <input
+              id="aiBusiness"
+              type="text"
+              placeholder="Ej. Café Cartagena"
+              maxlength="80"
+            />
 
-</section>
+            <label for="aiType">Tipo de sitio</label>
+            <select id="aiType">
+              <option value="landing">Landing / Página informativa</option>
+              <option value="business">Sitio empresarial</option>
+              <option value="portfolio">Portafolio profesional</option>
+              <option value="ecommerce">E-commerce</option>
+            </select>
 
+            <label for="aiStyle">Estilo visual</label>
+            <select id="aiStyle">
+              <option value="modern">Moderno y tecnológico</option>
+              <option value="premium">Premium y elegante</option>
+              <option value="minimal">Minimalista</option>
+              <option value="corporate">Corporativo</option>
+            </select>
 
-<!-- =====================================================
+            <label for="aiDescription">Describe tu negocio</label>
+            <textarea
+              id="aiDescription"
+              rows="5"
+              maxlength="600"
+              placeholder="Ej. Somos una empresa de turismo en Cartagena y queremos recibir reservas por WhatsApp."
+            ></textarea>
+
+            <button
+              type="button"
+              class="btn btn-primary ai-generate-btn"
+              id="generateSiteBtn"
+            >
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Generar sitio web
+            </button>
+            <small class="ai-note"
+              >La versión base genera una propuesta localmente. Puede conectarse
+              a un backend de IA mediante <code>/api/generate-site</code> sin
+              exponer claves en el navegador.</small
+            >
+          </div>
+
+          <div class="ai-preview-panel">
+            <div class="ai-preview-toolbar">
+              <div><span class="status-dot"></span> Vista previa</div>
+              <div class="preview-actions">
+                <button
+                  type="button"
+                  id="previewDesktop"
+                  class="active"
+                  aria-label="Vista escritorio"
+                >
+                  <i class="fa-solid fa-desktop"></i>
+                </button>
+                <button
+                  type="button"
+                  id="previewMobile"
+                  aria-label="Vista móvil"
+                >
+                  <i class="fa-solid fa-mobile-screen"></i>
+                </button>
+              </div>
+            </div>
+            <div class="ai-preview-frame desktop-preview" id="aiPreview">
+              <div class="preview-empty" id="previewEmpty">
+                <i class="fa-solid fa-code"></i>
+                <h3>Tu sitio aparecerá aquí</h3>
+                <p>Completa los datos y selecciona «Generar sitio web».</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-wrapper" id="planes">
+          <div class="pricing-title">
+            <span>PLANES INNOVENT</span>
+            <h3>Desarrollo web y soporte tecnológico</h3>
+            <p>
+              Precios de referencia en pesos colombianos. Los proyectos pueden
+              ajustarse según requerimientos.
+            </p>
+          </div>
+
+          <div class="pricing-category">
+            <div class="pricing-category-heading">
+              <i class="fa-solid fa-globe"></i>
+              <div>
+                <h4>Desarrollo Web</h4>
+                <p>Desde sitios informativos hasta tiendas virtuales.</p>
+              </div>
+            </div>
+            <div class="pricing-grid">
+              <article class="price-card">
+                <span class="price-label">PLAN BÁSICO</span>
+                <h4><!--Básico--></h4>
+                <div class="price">$400.000 <small>COP</small></div>
+                <ul>
+                  <li>Página web profesional</li>
+                  <li>Diseño responsive</li>
+                  <li>Secciones esenciales</li>
+                  <li>Formulario de contacto</li>
+                </ul>
+                <a href="#contacto" class="btn btn-outline">Solicitar</a>
+              </article>
+              <article class="price-card">
+                <span class="price-label">PLAN INTELIGENTE</span>
+                <h4><!--Inteligente--></h4>
+                <div class="price">$800.000 <small>COP</small></div>
+                <ul>
+                  <li>Web personalizada</li>
+                  <li>Diseño responsive</li>
+                  <li>SEO básico</li>
+                  <li>Integración con WhatsApp</li>
+                </ul>
+                <a href="#contacto" class="btn btn-outline">Solicitar</a>
+              </article>
+              <article class="price-card featured">
+                <span class="price-badge">RECOMENDADO</span
+                ><span class="price-label">PLAN PROFESIONAL</span>
+                <h4><!--Profesional--></h4>
+                <div class="price">$1'500.000 <small>COP</small></div>
+                <ul>
+                  <li>Sitio web completo</li>
+                  <li>Automatizaciones</li>
+                  <li>SEO avanzado</li>
+                  <li>Integraciones personalizadas</li>
+                </ul>
+                <a href="#contacto" class="btn btn-primary">Solicitar</a>
+              </article>
+              <article class="price-card">
+                <span class="price-label">E-COMMERCE</span>
+                <h4><!--E-commerce--></h4>
+                <div class="price">$3'500.000 <small>COP</small></div>
+                <ul>
+                  <li>Tienda virtual</li>
+                  <li>Catálogo de productos</li>
+                  <li>Integración de pagos</li>
+                  <li>Panel administrativo</li>
+                </ul>
+                <a href="#contacto" class="btn btn-outline">Solicitar</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="pricing-category support-pricing">
+            <div class="pricing-category-heading">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+              <div>
+                <h4>Soporte Técnico — Hardware &amp; Software</h4>
+                <p>
+                  Mantenimiento y acompañamiento para mantener tu operación
+                  tecnológica.
+                </p>
+              </div>
+            </div>
+            <div class="pricing-grid support-grid">
+              <article class="price-card">
+                <span class="price-label">PLAN BÁSICO</span>
+                <h4><!--Básico--></h4>
+                <div class="price">$49.000 <small>COP / mes</small></div>
+                <ul>
+                  <li>Mantenimiento preventivo</li>
+                  <li>Optimización del sistema</li>
+                  <li>Actualización de software</li>
+                  <li>Soporte remoto</li>
+                </ul>
+                <a href="#contacto" class="btn btn-outline">Solicitar</a>
+              </article>
+              <article class="price-card featured">
+                <span class="price-badge">MÁS SOLICITADO</span
+                ><span class="price-label">PLAN PRO</span>
+                <h4><!--Pro--></h4>
+                <div class="price">$79.000 <small>COP / mes</small></div>
+                <ul>
+                  <li>Mantenimiento preventivo y correctivo</li>
+                  <li>Optimización hardware/software</li>
+                  <li>Revisión de seguridad básica</li>
+                  <li>Soporte remoto</li>
+                </ul>
+                <a href="#contacto" class="btn btn-primary">Solicitar</a>
+              </article>
+              <article class="price-card">
+                <span class="price-label">PLAN EMPRESARIAL</span>
+                <h4><!--Empresarial--></h4>
+                <div class="price">$129.000 <small>COP / mes</small></div>
+                <ul>
+                  <li>Soporte integral</li>
+                  <li>Mantenimiento hardware/software</li>
+                  <li>Prioridad de atención</li>
+                  <li>Acompañamiento tecnológico</li>
+                </ul>
+                <a href="#contacto" class="btn btn-outline">Solicitar</a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
      NOSOTROS
 ===================================================== -->
 
-<section class="section about" id="nosotros">
-
-    <div class="container about-grid">
-
-
+    <section class="section about" id="nosotros">
+      <div class="container about-grid">
         <div class="about-image">
+          <div class="about-image-content">
+            <i class="fa-solid fa-laptop-code"></i>
 
-            <div class="about-image-content">
+            <span> INNOVENT </span>
 
-                <i class="fa-solid fa-laptop-code"></i>
-
-                <span>
-                    INNOVENT
-                </span>
-
-                <small>
-                    SERVICIOS TI
-                </small>
-
-            </div>
-
+            <small> SERVICIOS TI </small>
+          </div>
         </div>
-
 
         <div class="about-content">
+          <span class="section-label"> SOBRE NOSOTROS </span>
 
-            <span class="section-label">
-                SOBRE NOSOTROS
-            </span>
+          <h2>
+            Tecnología con
+            <strong>propósito.</strong>
+          </h2>
 
-            <h2>
-                Tecnología con
-                <strong>propósito.</strong>
-            </h2>
+          <p>
+            En Innovent Servicios TI trabajamos para acercar soluciones
+            tecnológicas a emprendedores, empresas y personas.
+          </p>
 
-            <p>
-                En Innovent Servicios TI trabajamos para acercar
-                soluciones tecnológicas a emprendedores, empresas
-                y personas.
-            </p>
+          <p>
+            Nuestro enfoque combina soporte, innovación y desarrollo tecnológico
+            para construir soluciones prácticas y escalables.
+          </p>
 
-            <p>
-                Nuestro enfoque combina soporte, innovación y
-                desarrollo tecnológico para construir soluciones
-                prácticas y escalables.
-            </p>
-
-
-            <a href="#contacto" class="btn btn-primary">
-                Conoce más
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
+          <a href="#contacto" class="btn btn-primary">
+            Conoce más
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
-
 
         <div class="about-features">
+          <div class="feature">
+            <i class="fa-solid fa-lightbulb"></i>
 
-            <div class="feature">
+            <div>
+              <h4>Soluciones prácticas</h4>
 
-                <i class="fa-solid fa-lightbulb"></i>
-
-                <div>
-
-                    <h4>
-                        Soluciones prácticas
-                    </h4>
-
-                    <p>
-                        Adaptadas a tus necesidades.
-                    </p>
-
-                </div>
-
+              <p>Adaptadas a tus necesidades.</p>
             </div>
+          </div>
 
+          <div class="feature">
+            <i class="fa-solid fa-user-check"></i>
 
-            <div class="feature">
+            <div>
+              <h4>Atención personalizada</h4>
 
-                <i class="fa-solid fa-user-check"></i>
-
-                <div>
-
-                    <h4>
-                        Atención personalizada
-                    </h4>
-
-                    <p>
-                        Cercana y confiable.
-                    </p>
-
-                </div>
-
+              <p>Cercana y confiable.</p>
             </div>
+          </div>
 
+          <div class="feature">
+            <i class="fa-solid fa-rocket"></i>
 
-            <div class="feature">
+            <div>
+              <h4>Innovación constante</h4>
 
-                <i class="fa-solid fa-rocket"></i>
-
-                <div>
-
-                    <h4>
-                        Innovación constante
-                    </h4>
-
-                    <p>
-                        Siempre un paso adelante.
-                    </p>
-
-                </div>
-
+              <p>Siempre un paso adelante.</p>
             </div>
+          </div>
 
+          <div class="feature">
+            <i class="fa-solid fa-microchip"></i>
 
-            <div class="feature">
+            <div>
+              <h4>Visión tecnológica</h4>
 
-                <i class="fa-solid fa-microchip"></i>
-
-                <div>
-
-                    <h4>
-                        Visión tecnológica
-                    </h4>
-
-                    <p>
-                        Para un futuro mejor.
-                    </p>
-
-                </div>
-
+              <p>Para un futuro mejor.</p>
             </div>
-
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      TESTIMONIOS
 ===================================================== -->
 
-<section class="section testimonials" id="testimonios">
-
-    <div class="container">
-
+    <section class="section testimonials" id="testimonios">
+      <div class="container">
         <div class="section-heading">
+          <span> TESTIMONIOS </span>
 
-            <span>
-                TESTIMONIOS
-            </span>
+          <h2>
+            Lo que dicen nuestros
+            <strong>clientes</strong>
+          </h2>
 
-            <h2>
-                Lo que dicen nuestros
-                <strong>clientes</strong>
-            </h2>
-
-            <p>
-                La confianza de nuestros clientes nos impulsa
-                a seguir creciendo.
-            </p>
-
+          <p>
+            La confianza de nuestros clientes nos impulsa a seguir creciendo.
+          </p>
         </div>
-
 
         <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
 
+              <div>
+                <h4>Cliente</h4>
 
-            <article class="testimonial-card">
+                <span> Emprendedor </span>
+              </div>
+            </div>
 
-                <div class="testimonial-header">
+            <div class="stars">★★★★★</div>
 
-                    <div class="avatar">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
+            <p>
+              "El servicio fue excelente y me ayudaron a encontrar una solución
+              adecuada para mi negocio."
+            </p>
+          </article>
 
-                    <div>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
 
-                        <h4>
-                            Cliente
-                        </h4>
+              <div>
+                <h4>Cliente</h4>
 
-                        <span>
-                            Emprendedor
-                        </span>
+                <span> Pequeña empresa </span>
+              </div>
+            </div>
 
-                    </div>
+            <div class="stars">★★★★★</div>
 
-                </div>
+            <p>
+              "El soporte técnico fue rápido y efectivo. Siempre estuvieron
+              atentos a resolver nuestras necesidades."
+            </p>
+          </article>
 
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
 
-                <div class="stars">
-                    ★★★★★
-                </div>
+              <div>
+                <h4>Cliente</h4>
 
+                <span> Emprendedora </span>
+              </div>
+            </div>
 
-                <p>
-                    "El servicio fue excelente y me ayudaron
-                    a encontrar una solución adecuada para
-                    mi negocio."
-                </p>
+            <div class="stars">★★★★★</div>
 
-            </article>
-
-
-            <article class="testimonial-card">
-
-                <div class="testimonial-header">
-
-                    <div class="avatar">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            Cliente
-                        </h4>
-
-                        <span>
-                            Pequeña empresa
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-
-                <p>
-                    "El soporte técnico fue rápido y efectivo.
-                    Siempre estuvieron atentos a resolver
-                    nuestras necesidades."
-                </p>
-
-            </article>
-
-
-            <article class="testimonial-card">
-
-                <div class="testimonial-header">
-
-                    <div class="avatar">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            Cliente
-                        </h4>
-
-                        <span>
-                            Emprendedora
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-
-                <p>
-                    "La asesoría tecnológica nos permitió
-                    identificar oportunidades para mejorar
-                    nuestros procesos."
-                </p>
-
-            </article>
-
+            <p>
+              "La asesoría tecnológica nos permitió identificar oportunidades
+              para mejorar nuestros procesos."
+            </p>
+          </article>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      CONTACTO
 ===================================================== -->
 
-<section class="contact-section" id="contacto">
-
-    <div class="container contact-grid">
-
-
+    <section class="contact-section" id="contacto">
+      <div class="container contact-grid">
         <div class="contact-info">
+          <span> ¿TIENES UN PROYECTO? </span>
 
-            <span>
-                ¿TIENES UN PROYECTO?
-            </span>
+          <h2>
+            Hablemos de
+            <strong>tu idea.</strong>
+          </h2>
 
-            <h2>
-                Hablemos de
-                <strong>tu idea.</strong>
-            </h2>
-
-            <p>
-                Cuéntanos qué necesitas y encontraremos
-                una solución tecnológica adecuada para ti.
-            </p>
-
+          <p>
+            Cuéntanos qué necesitas y encontraremos una solución tecnológica
+            adecuada para ti.
+          </p>
         </div>
 
-
         <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre"> Nombre </label>
 
-
-            <div class="form-row">
-
-                <div class="form-group">
-
-                    <label for="nombre">
-                        Nombre
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nombre"
-                        placeholder="Tu nombre"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="correo">
-                        Correo electrónico
-                    </label>
-
-                    <input
-                        type="email"
-                        id="correo"
-                        placeholder="correo@ejemplo.com"
-                        required>
-
-                </div>
-
+              <input type="text" id="nombre" placeholder="Tu nombre" required />
             </div>
-
 
             <div class="form-group">
+              <label for="correo"> Correo electrónico </label>
 
-                <label for="servicio">
-                    Servicio
-                </label>
-
-                <select id="servicio">
-
-                    <option value="">
-                        Selecciona un servicio
-                    </option>
-
-                    <option>
-                        Desarrollo Web
-                    </option>
-
-                    <option>
-                        Soporte TI
-                    </option>
-
-                    <option>
-                        Soluciones con IA
-                    </option>
-
-                    <option>
-                        Seguridad Informática
-                    </option>
-
-                    <option>
-                        Mantenimiento
-                    </option>
-
-                    <option>
-                        Consultoría TI
-                    </option>
-
-                </select>
-
+              <input
+                type="email"
+                id="correo"
+                placeholder="correo@ejemplo.com"
+                required
+              />
             </div>
+          </div>
 
+          <div class="form-group">
+            <label for="servicio"> Servicio </label>
 
-            <div class="form-group">
+            <select id="servicio">
+              <option value="">Selecciona un servicio</option>
 
-                <label for="mensaje">
-                    Mensaje
-                </label>
+              <option>Desarrollo Web</option>
 
-                <textarea
-                    id="mensaje"
-                    rows="5"
-                    placeholder="Cuéntanos sobre tu proyecto..."
-                    required></textarea>
+              <option>Soporte TI</option>
 
-            </div>
+              <option>Soluciones con IA</option>
 
+              <option>Seguridad Informática</option>
 
-            <button
-                type="submit"
-                class="btn btn-primary">
+              <option>Mantenimiento</option>
 
-                Enviar
+              <option>Consultoría TI</option>
+            </select>
+          </div>
 
-                <i class="fa-solid fa-paper-plane"></i>
+          <div class="form-group">
+            <label for="mensaje"> Mensaje </label>
 
-            </button>
+            <textarea
+              id="mensaje"
+              rows="5"
+              placeholder="Cuéntanos sobre tu proyecto..."
+              required
+            ></textarea>
+          </div>
 
+          <button type="submit" class="btn btn-primary">
+            Enviar
 
-            <div
-                id="formMessage"
-                class="form-message">
-            </div>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
 
+          <div id="formMessage" class="form-message"></div>
         </form>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      ASESOR VIRTUAL
 ===================================================== -->
 
-<div class="assistant-wrapper">
-
-    <button
+    <div class="assistant-wrapper">
+      <button
         class="assistant-button"
         id="assistantButton"
-        aria-label="Abrir asesor virtual">
-
+        aria-label="Abrir asesor virtual"
+      >
         <i class="fa-solid fa-robot"></i>
 
         <span class="assistant-online"></span>
+      </button>
 
-    </button>
-
-
-    <div
-        class="assistant-chat"
-        id="assistantChat">
-
-
+      <div class="assistant-chat" id="assistantChat">
         <div class="assistant-header">
-
-            <div class="assistant-profile">
-
-                <div class="assistant-avatar">
-                    <i class="fa-solid fa-robot"></i>
-                </div>
-
-                <div>
-
-                    <strong>
-                        Asesor Virtual
-                    </strong>
-
-                    <span>
-                        <i class="fa-solid fa-circle"></i>
-                        En línea
-                    </span>
-
-                </div>
-
+          <div class="assistant-profile">
+            <div class="assistant-avatar">
+              <i class="fa-solid fa-robot"></i>
             </div>
 
+            <div>
+              <strong> Asesor Virtual </strong>
 
-            <button
-                id="closeAssistant"
-                class="close-assistant">
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
-        </div>
-
-
-        <div
-            class="assistant-messages"
-            id="assistantMessages">
-
-
-            <div class="bot-message">
-
-                Hola. Soy el asistente virtual de
-                <strong>Innovent Servicios TI</strong>.
-
-                <br><br>
-
-                ¿Cómo puedo ayudarte?
-
+              <span>
+                <i class="fa-solid fa-circle"></i>
+                En línea
+              </span>
             </div>
+          </div>
 
-
+          <button id="closeAssistant" class="close-assistant">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
 
+        <div class="assistant-messages" id="assistantMessages">
+          <div class="bot-message">
+            Hola. Soy el asistente virtual de
+            <strong>Innovent Servicios TI</strong>.
+
+            <br /><br />
+
+            ¿Cómo puedo ayudarte?
+          </div>
+        </div>
 
         <div class="assistant-options">
+          <button data-question="servicios">Ver servicios</button>
 
-            <button data-question="servicios">
-                Ver servicios
-            </button>
+          <button data-question="precios">Consultar precios</button>
 
-            <button data-question="precios">
-                Consultar precios
-            </button>
-
-            <button data-question="contacto">
-                Hablar con un asesor
-            </button>
-
+          <button data-question="contacto">Hablar con un asesor</button>
         </div>
 
+        <form class="assistant-input" id="assistantForm">
+          <input
+            type="text"
+            id="assistantInput"
+            placeholder="Escribe un mensaje..."
+            autocomplete="off"
+          />
 
-        <form
-            class="assistant-input"
-            id="assistantForm">
-
-            <input
-                type="text"
-                id="assistantInput"
-                placeholder="Escribe un mensaje..."
-                autocomplete="off">
-
-            <button type="submit">
-
-                <i class="fa-solid fa-paper-plane"></i>
-
-            </button>
-
+          <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
         </form>
-
+      </div>
     </div>
 
-</div>
-
-
-<!-- =====================================================
+    <!-- =====================================================
      FOOTER
 ===================================================== -->
 
-<footer class="footer">
-
-    <div class="container footer-grid">
-
-
+    <footer class="footer">
+      <div class="container footer-grid">
         <!-- Marca -->
 
         <div class="footer-brand">
+          <img src="assets/logo.png" alt="Innovent Servicios TI" />
 
-            <img
-                src="assets/logo.png"
-                alt="Innovent Servicios TI">
+          <h3>INNOVENT</h3>
 
-            <h3>
-                INNOVENT
-            </h3>
+          <span> SERVICIOS TI </span>
 
-            <span>
-                SERVICIOS TI
-            </span>
-
-            <p>
-                Más que soporte,
-                somos tu aliado tecnológico.
-            </p>
-
+          <p>Más que soporte, somos tu aliado tecnológico.</p>
         </div>
-
 
         <!-- Enlaces -->
 
         <div class="footer-column">
+          <h4>Enlaces rápidos</h4>
 
-            <h4>
-                Enlaces rápidos
-            </h4>
+          <a href="#inicio"> Inicio </a>
 
-            <a href="#inicio">
-                Inicio
-            </a>
+          <a href="#servicios"> Servicios </a>
 
-            <a href="#servicios">
-                Servicios
-            </a>
+          <a href="#generador-ia"> Generador IA </a>
 
-            <a href="#nosotros">
-                Nosotros
-            </a>
+          <a href="#nosotros"> Nosotros </a>
 
-            <a href="#testimonios">
-                Testimonios
-            </a>
+          <a href="#testimonios"> Testimonios </a>
 
-            <a href="#contacto">
-                Contacto
-            </a>
-
+          <a href="#contacto"> Contacto </a>
         </div>
-
 
         <!-- Redes -->
 
         <div class="footer-column social-column">
+          <h4>Síguenos</h4>
 
-            <h4>
-                Síguenos
-            </h4>
+          <div class="footer-social">
+            <a
+              href="https://www.facebook.com/profile.php?id=61593718547031"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
 
+              <span> Facebook </span>
+            </a>
 
-            <div class="footer-social">
+            <a
+              href="https://www.tiktok.com/@innoventserviciosti"
+              target="_blank"
+              aria-label="TikTok"
+            >
+              <i class="fa-brands fa-tiktok"></i>
 
+              <span> TikTok </span>
+            </a>
 
-                <a
-                    href="https://www.facebook.com/profile.php?id=61593718547031"
-                    target="_blank"
-                    aria-label="Facebook">
+            <a
+              href="https://www.instagram.com/INNOVENT_SERVICIOS_TI/"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="fa-brands fa-instagram"></i>
 
-                    <i class="fa-brands fa-facebook-f"></i>
+              <span> Instagram </span>
+            </a>
 
-                    <span>
-                        Facebook
-                    </span>
+            <a
+              href="https://www.threads.com/@innovent_servicios_ti"
+              target="_blank"
+              aria-label="Threads"
+            >
+              <i class="fa-brands fa-threads"></i>
 
-                </a>
+              <span> Threads </span>
+            </a>
 
+            <a
+              href="https://www.youtube.com/@Innovent_soporte_ti"
+              target="_blank"
+              aria-label="YouTube"
+            >
+              <i class="fa-brands fa-youtube"></i>
 
-                <a
-                    href="https://www.tiktok.com/@innoventserviciosti"
-                    target="_blank"
-                    aria-label="TikTok">
+              <span> YouTube </span>
+            </a>
 
-                    <i class="fa-brands fa-tiktok"></i>
+            <a
+              href="https://github.com/InnoventServiciosTI"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fa-brands fa-github"></i>
 
-                    <span>
-                        TikTok
-                    </span>
+              <span> GitHub </span>
+            </a>
 
-                </a>
+            <a
+              href="https://www.linkedin.com/in/manuel-perez-511b91334/"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
 
-
-                <a
-                    href="https://www.instagram.com/INNOVENT_SERVICIOS_TI/"
-                    target="_blank"
-                    aria-label="Instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                    <span>
-                        Instagram
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="https://www.threads.com/@innovent_servicios_ti"
-                    target="_blank"
-                    aria-label="Threads">
-
-                    <i class="fa-brands fa-threads"></i>
-
-                    <span>
-                        Threads
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="https://www.youtube.com/@Innovent_soporte_ti"
-                    target="_blank"
-                    aria-label="YouTube">
-
-                    <i class="fa-brands fa-youtube"></i>
-
-                    <span>
-                        YouTube
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="https://github.com/InnoventServiciosTI"
-                    target="_blank"
-                    aria-label="GitHub">
-
-                    <i class="fa-brands fa-github"></i>
-
-                    <span>
-                        GitHub
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="https://www.linkedin.com/in/manuel-perez-511b91334/"
-                    target="_blank"
-                    aria-label="LinkedIn">
-
-                    <i class="fa-brands fa-linkedin-in"></i>
-
-                    <span>
-                        LinkedIn
-                    </span>
-
-                </a>
-
-            </div>
-
+              <span> LinkedIn </span>
+            </a>
+          </div>
         </div>
-
 
         <!-- Contacto -->
 
         <div class="footer-column">
+          <h4>Contacto</h4>
 
-            <h4>
-                Contacto
-            </h4>
+          <p>
+            <i class="fa-solid fa-phone"></i>
+            +57 301 204 1255
+          </p>
 
-            <p>
-                <i class="fa-solid fa-phone"></i>
-                +57 301 204 1255
-            </p>
+          <p>
+            <i class="fa-solid fa-envelope"></i>
+            innoventdesarrollodesoftware@gmail.com
+          </p>
 
-            <p>
-                <i class="fa-solid fa-envelope"></i>
-                innoventdesarrollodesoftware@gmail.com
-            </p>
-
-            <p>
-                <i class="fa-solid fa-location-dot"></i>
-                Cartagena, Bolívar - Colombia
-            </p>
-
+          <p>
+            <i class="fa-solid fa-location-dot"></i>
+            Cartagena, Bolívar - Colombia
+          </p>
         </div>
+      </div>
 
-    </div>
-
-
-    <div class="footer-bottom">
-
+      <div class="footer-bottom">
         <div class="container">
+          <p>
+            © <span id="currentYear"></span>
+            Innovent Servicios TI. Todos los derechos reservados.
+          </p>
 
-            <p>
-                © <span id="currentYear"></span>
-                Innovent Servicios TI.
-                Todos los derechos reservados.
-            </p>
+          <div>
+            <a href="#"> Política de privacidad </a>
 
-            <div>
+            <span>|</span>
 
-                <a href="#">
-                    Política de privacidad
-                </a>
-
-                <span>|</span>
-
-                <a href="#">
-                    Términos y condiciones
-                </a>
-
-            </div>
-
+            <a href="#"> Términos y condiciones </a>
+          </div>
         </div>
+      </div>
+    </footer>
 
-    </div>
+    <script>
+      /* =====================================================
+   GENERADOR WEB IA - FRONTEND
+   Endpoint opcional: POST /api/generate-site
+===================================================== */
+      (function () {
+        const $ = (id) => document.getElementById(id);
+        const business = $("aiBusiness"),
+          type = $("aiType"),
+          style = $("aiStyle"),
+          desc = $("aiDescription"),
+          preview = $("aiPreview"),
+          btn = $("generateSiteBtn");
+        if (!business || !type || !style || !desc || !preview || !btn) return;
 
-</footer>
+        const escapeHtml = (v) =>
+          String(v || "").replace(
+            /[&<>'"]/g,
+            (c) =>
+              ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                "'": "&#39;",
+                '"': "&quot;",
+              })[c],
+          );
+        const templates = {
+          landing: [
+            "Presentación de servicios",
+            "Beneficios para tus clientes",
+            "Llamado a la acción",
+          ],
+          business: [
+            "Servicios principales",
+            "Por qué elegirnos",
+            "Contacto y atención",
+          ],
+          portfolio: [
+            "Proyectos destacados",
+            "Experiencia profesional",
+            "Contacto",
+          ],
+          ecommerce: [
+            "Productos destacados",
+            "Compra en línea",
+            "Atención al cliente",
+          ],
+        };
+        function render(data) {
+          const name = escapeHtml(data.name || "Tu negocio"),
+            text = escapeHtml(
+              data.description ||
+                "Una solución profesional para presentar tu negocio en internet.",
+            ),
+            cards = templates[data.type] || templates.business;
+          preview.innerHTML = `<div class="generated-site"><div class="generated-hero"><small>GENERADO CON INNOVENT IA</small><h2>${name}</h2><p>${text}</p></div><div class="generated-content">${cards.map((x, i) => `<div class="generated-card"><strong>${escapeHtml(x)}</strong><p>${["Una presentación clara de tu propuesta de valor y servicios.", "Contenido organizado para facilitar la decisión del cliente.", "Canales de contacto preparados para convertir visitas en oportunidades."][i]}</p></div>`).join("")}</div><div class="generated-cta"><a href="#contacto">Solicitar este sitio</a></div></div>`;
+        }
+        async function generate() {
+          if (!business.value.trim() || !desc.value.trim()) {
+            business.focus();
+            alert(
+              "Ingresa el nombre y una descripción de tu negocio para generar la propuesta.",
+            );
+            return;
+          }
+          btn.disabled = true;
+          btn.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Generando...';
+          const payload = {
+            name: business.value.trim(),
+            type: type.value,
+            style: style.value,
+            description: desc.value.trim(),
+          };
+          try {
+            const response = await fetch("/api/generate-site", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            if (response.ok) {
+              const data = await response.json();
+              if (data.html) {
+                preview.innerHTML = `<div class="generated-site">${data.html}</div>`;
+                return;
+              }
+            }
+          } catch (e) {
+            /* backend opcional: se usa generador local */
+          }
+          await new Promise((r) => setTimeout(r, 650));
+          render(payload);
+        }
+        btn.addEventListener("click", generate);
+        $("previewDesktop")?.addEventListener("click", () => {
+          preview.classList.remove("mobile-preview");
+          $("previewDesktop").classList.add("active");
+          $("previewMobile").classList.remove("active");
+        });
+        $("previewMobile")?.addEventListener("click", () => {
+          preview.classList.add("mobile-preview");
+          $("previewMobile").classList.add("active");
+          $("previewDesktop").classList.remove("active");
+        });
+        [business, desc].forEach((el) =>
+          el.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+              e.preventDefault();
+              generate();
+            }
+          }),
+        );
+      })();
+    </script>
 
-
-<script src="js/script.js"></script>
-
-</body>
+    <script src="js/script.js"></script>
+  </body>
 </html>
