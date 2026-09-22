@@ -239,6 +239,8 @@ const responses = {
         Innovent Servicios TI mediante
         nuestros canales de contacto.
         <br><br>
+        📱 WhatsApp: +57 301 204 1255
+        <br>
         📧 innoventdesarrollodesoftware@gmail.com
         <br>
         📍 Cartagena, Bolívar - Colombia
